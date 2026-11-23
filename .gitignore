@@ -1,0 +1,10 @@
+node_modules/
+dist/
+test-results/
+.test-tools/
+phone-site/
+.openai/
+.env
+.env.*
+*.local
+*-备份-*.json

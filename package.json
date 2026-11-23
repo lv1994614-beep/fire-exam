@@ -1,0 +1,17 @@
+{
+  "name": "fire-drill-2026",
+  "version": "1.0.0",
+  "private": true,
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "scripts": {
+    "start": "node tools/site.mjs",
+    "build": "node tools/site.mjs --build",
+    "preview": "node tools/site.mjs --preview",
+    "test": "node --test upstream/tests/*.test.js tests/bank.test.mjs",
+    "test:mobile": "npm run build && node tests/mobile.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

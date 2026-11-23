@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f7fb">
+    <title>QZ</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="/*{{LOGO_48}}*/" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+/*{{CSS}}*/
+    </style>
+    <script>
+    // Apply the saved theme before first paint (avoids a flash)
+    (function () {
+        var theme = null;
+        try {
+            theme = localStorage.getItem('examsim:theme');     // mirror written by the app (works with IndexedDB storage too)
+            if (!theme) { var raw = localStorage.getItem('examsim:v2'); if (raw) theme = (JSON.parse(raw).prefs || {}).theme; }
+            if (!theme) theme = localStorage.getItem('exam_theme');
+        } catch (e) {}
+        if (theme !== 'dark' && theme !== 'light') {
+            theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+    })();
+    </script>
+    <script src="exams.js" onerror="void 0"></script>
+</head>
+<body>
+<a class="skip-link" href="#main" id="skip-link">Skip to content</a>
+<header class="app-header">
+    <div class="app-header-inner">
+        <a class="brand" href="exam.html" id="brand-link">
+            <span class="brand-mark" id="brand-mark"><img src="/*{{LOGO_96}}*/" alt="" width="34" height="34"></span>
+            <span class="brand-text"><span id="logo-name">QZ</span><small id="logo-version"></small></span>
+        </a>
+        <div class="header-actions">
+            <div id="runtime-timer-box" class="timer-pill hidden" role="timer"><span id="timer-icon"></span><span id="timer-label" class="timer-label"></span><span id="runtime-clock-string">--:--</span></div>
+            <button type="button" id="palette-btn" class="icon-btn"></button>
+            <button type="button" id="options-btn" class="icon-btn"></button>
+            <button type="button" id="lang-btn" class="icon-btn"></button>
+            <button type="button" id="theme-btn" class="icon-btn"></button>
+        </div>
+    </div>
+</header>
+
+<main id="main" class="main-wrapper" tabindex="-1">
+    <section id="view-picker" class="view hidden"></section>
+    <section id="view-dashboard" class="view hidden"></section>
+    <section id="view-runtime" class="view hidden"></section>
+    <section id="view-review" class="view hidden"></section>
+    <section id="view-summary" class="view hidden"></section>
+    <section id="view-stats" class="view hidden"></section>
+    <section id="view-options" class="view hidden"></section>
+    <section id="view-library" class="view hidden"></section>
+    <section id="view-search" class="view hidden"></section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="import-file" accept=".json,application/json" class="hidden">
+
+<script>
+/*{{CATALOG}}*/
+</script>
+<script>
+/*{{JS}}*/
+</script>
+</body>
+</html>
